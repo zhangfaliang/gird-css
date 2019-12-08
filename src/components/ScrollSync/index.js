@@ -11,30 +11,14 @@ const TOP_COLOR_FROM = hexToRgb('#000000');
 const TOP_COLOR_TO = hexToRgb('#333333');
 
 export default class GridExample extends React.PureComponent {
-  constructor(props, context) {
-    super(props, context);
-
-    this.state = {
-      columnWidth: 75,
-      columnCount: 50,
-      height: 300,
-      overscanColumnCount: 0,
-      overscanRowCount: 5,
-      rowHeight: 40,
-      rowCount: 100
-    };
-  }
-
   render() {
-    const {
-      columnCount,
-      columnWidth,
-      height,
-      overscanColumnCount,
-      overscanRowCount,
-      rowHeight,
-      rowCount
-    } = this.state;
+    const COLUM_WIDTH = 75;
+    const COLUM_COUNT = 50;
+    const HEIGHT = 300;
+    const OVER_SCAN_COLUMN_COUNT = 0;
+    const OVER_SCAN_ROW_COUNT = 5;
+    const ROW_HEIGHT = 40;
+    const ROW_COUNT = 100;
 
     return (
       <ScrollSync>
@@ -73,6 +57,7 @@ export default class GridExample extends React.PureComponent {
                   position: 'absolute',
                   left: 0,
                   top: 0,
+                  zIndex: 99999,
                   color: leftColor,
                   backgroundColor: `rgb(${topBackgroundColor.r},${topBackgroundColor.g},${topBackgroundColor.b})`
                 }}
@@ -80,10 +65,10 @@ export default class GridExample extends React.PureComponent {
                 <Grid
                   cellRenderer={this._renderLeftHeaderCell}
                   className={styles.HeaderGrid}
-                  width={columnWidth}
-                  height={rowHeight}
-                  rowHeight={rowHeight}
-                  columnWidth={columnWidth}
+                  width={COLUM_WIDTH}
+                  height={ROW_HEIGHT}
+                  rowHeight={ROW_HEIGHT}
+                  columnWidth={COLUM_WIDTH}
                   rowCount={1}
                   columnCount={1}
                 />
@@ -93,23 +78,24 @@ export default class GridExample extends React.PureComponent {
                 style={{
                   position: 'absolute',
                   left: 0,
-                  top: rowHeight,
+                  zIndex: 99999,
+                  top: ROW_HEIGHT,
                   color: leftColor,
                   backgroundColor: `rgb(${leftBackgroundColor.r},${leftBackgroundColor.g},${leftBackgroundColor.b})`
                 }}
               >
                 <Grid
-                  overscanColumnCount={overscanColumnCount}
-                  overscanRowCount={overscanRowCount}
+                  overscanColumnCount={OVER_SCAN_COLUMN_COUNT}
+                  overscanRowCount={OVER_SCAN_ROW_COUNT}
                   cellRenderer={this._renderLeftSideCell}
-                  columnWidth={columnWidth}
+                  columnWidth={COLUM_WIDTH}
                   columnCount={1}
                   className={styles.LeftSideGrid}
-                  height={height - scrollbarSize()}
-                  rowHeight={rowHeight}
-                  rowCount={rowCount}
+                  height={HEIGHT - scrollbarSize()}
+                  rowHeight={ROW_HEIGHT}
+                  rowCount={ROW_COUNT}
                   scrollTop={scrollTop}
-                  width={columnWidth}
+                  width={COLUM_WIDTH}
                 />
               </div>
               <div className={styles.GridColumn}>
@@ -120,18 +106,18 @@ export default class GridExample extends React.PureComponent {
                         style={{
                           backgroundColor: `rgb(${topBackgroundColor.r},${topBackgroundColor.g},${topBackgroundColor.b})`,
                           color: topColor,
-                          height: rowHeight,
+                          height: ROW_HEIGHT,
                           width: width - scrollbarSize()
                         }}
                       >
                         <Grid
                           className={styles.HeaderGrid}
-                          columnWidth={columnWidth}
-                          columnCount={columnCount}
-                          height={rowHeight}
-                          overscanColumnCount={overscanColumnCount}
+                          columnWidth={COLUM_WIDTH}
+                          columnCount={COLUM_COUNT}
+                          height={ROW_HEIGHT}
+                          overscanColumnCount={OVER_SCAN_COLUMN_COUNT}
                           cellRenderer={this._renderHeaderCell}
-                          rowHeight={rowHeight}
+                          rowHeight={ROW_HEIGHT}
                           rowCount={1}
                           scrollLeft={scrollLeft}
                           width={width - scrollbarSize()}
@@ -141,21 +127,21 @@ export default class GridExample extends React.PureComponent {
                         style={{
                           backgroundColor: `rgb(${middleBackgroundColor.r},${middleBackgroundColor.g},${middleBackgroundColor.b})`,
                           color: middleColor,
-                          height,
+                          height: HEIGHT,
                           width
                         }}
                       >
                         <Grid
                           className={styles.BodyGrid}
-                          columnWidth={columnWidth}
-                          columnCount={columnCount}
-                          height={height}
+                          columnWidth={COLUM_WIDTH}
+                          columnCount={COLUM_COUNT}
+                          height={HEIGHT}
                           onScroll={onScroll}
-                          overscanColumnCount={overscanColumnCount}
-                          overscanRowCount={overscanRowCount}
+                          overscanColumnCount={OVER_SCAN_COLUMN_COUNT}
+                          overscanRowCount={OVER_SCAN_ROW_COUNT}
                           cellRenderer={this._renderBodyCell}
-                          rowHeight={rowHeight}
-                          rowCount={rowCount}
+                          rowHeight={ROW_HEIGHT}
+                          rowCount={ROW_COUNT}
                           width={width}
                         />
                       </div>
