@@ -1,9 +1,14 @@
-import React from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import React from 'react';
+import logo from './logo.svg';
+import ScrollSync from './components/ScrollSync';
+import './App.css';
 
 function App() {
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      <ScrollSync />
+    </div>
+  );
 }
 
 export default App;
