@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
-import ScrollSync from './components/ScrollSync';
+import ScrollSync from './components/ScrollSync/foo';
 import './App.css';
 
 function App() {
